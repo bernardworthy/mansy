@@ -1,7 +1,7 @@
 app.test = function(userId) {
   console.log(userId);
-  
-  api.userDetail(userId)
+
+  app.api.userDetail(userId)
   .done(function(data) {
     console.log(data);
     var firstName = data.results[0].first_name;
