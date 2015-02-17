@@ -33,7 +33,7 @@ app.EtsyApi = function (spec) {
       var req = $.getJSON(url).done(function(data) {
         if (!data.ok) {
 
-          promise.reject(req, 'Unknown error', err);
+          promise.reject(req, 'Unknown error', data);
         } else {
           promise.resolve(data);
         }
