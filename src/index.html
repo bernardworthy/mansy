@@ -8,6 +8,8 @@
 </head>
 <body>
 
+  <div class="main"></div>
+
   <script type="text/html" id="listings">
     <% m.items.forEach(function (item) { %>
     <div class="item" data-id="<%- item.user_id %>">
@@ -15,20 +17,20 @@
       <div class="text-content">
         <h1><%- item.title %></h1>
         <h2><%- item.price %> <%- item.currency_code %></h2>
-        <h2 class="profile-link">User Profile</h2>
+        <a href="#users/<%- item.user_id %>"><button class="profile-link" >User Profile</button></a>
         <a href="<%- item.url %>"/></a>
         <p><%- item.description %></p>
       </div>
-    </div>
+    </div></h1>
     <% }) %>
   </script>
 
   <script type="text/html" id="profile">
-    <!-- <% m.users.forEach(function (user) { %> -->
-
-    <img src="<%- m.users.image_url_75x75 %>"/>
-
-    <!-- <% }) %> -->
+    <img src="<%= m.user.image_url_75x75 %>"/>
+    <h1><%- m.user.first_name %> <%- m.user.last_name %></h1>
+    <p>Username: <%- m.user.login_name %></p>
+    <p>Location: <%- m.user.city %>, <%- m.user.region %></p>
+    <p><%- m.user.bio %></p>
   </script>
 
   <script src="js/vendor.js"></script>
