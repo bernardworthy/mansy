@@ -10,7 +10,9 @@ app.test = function(userId) {
     var city = data.results[0].city;
     var avatar = data.results[0].image_url_75x75;
 
-    $('body').append('<img src="' + data.results[0].image_url_75x75 + '">');
+
+
+    // $('<img src="' + data.results[0].image_url_75x75 + '"/>').insertBefore($('.text-content'));
 
   })
   .fail(function(req, status, err) {

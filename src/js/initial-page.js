@@ -15,7 +15,7 @@ app.showInitialPage = function () {
       // var desc = data.results[0].description;
       // var price = data.results[0].price;
       // var currency = data.results[0].currency_code;
-      // var userId = data.results[0].user_id;
+      var userId = data.results[0].user_id;
       //
       // $('body').append('<img src="' + image + '">');
       // $('body').append('<h1>' + title + '</h1>');
@@ -23,7 +23,7 @@ app.showInitialPage = function () {
       // $('body').append('<a href="' + link + '">Check out the Posting Here!</a>');
       // $('body').append('<p>' + desc + '</p>');
       //
-      // app.test(userId);
+      app.test(userId);
 
     })
     .fail(function(req, status, err) {
