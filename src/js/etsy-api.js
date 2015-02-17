@@ -26,6 +26,20 @@ app.EtsyApi = function (spec) {
 
     userDetail: function (userId) {
       /* TODO: Call the Etsy profile API */
+      //users/19181170/profile.js?api_key=pq046kugg8nrx8f2mu71awb7&callback=
+      var url = baseUrl + '/users/' + userId + '/profile.js?api_key=' + spec.apiKey + '&callback=?';
+      var promise = $.Deferred();
+
+      var req = $.getJSON(url).done(function(data) {
+        if (!data.ok) {
+
+          promise.reject(req, 'Unknown error', err);
+        } else {
+          promise.resolve(data);
+        }
+      });
+
+      return promise;
     }
   };
 
