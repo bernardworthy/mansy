@@ -24,6 +24,24 @@ app.EtsyApi = function (spec) {
       return promise;
     },
 
+    listingsByUserId: function (user_id) {
+      var url = baseUrl + '/listings/active.js?includes=MainImage&api_key=' + spec.apiKey + '&user_id_or_name=' + user_id + '&callback=?';
+      var promise = $.Deferred();
+
+      var req = $.getJSON(url).done(function (data) {
+        if (!data.ok) {
+          // Keep our rejection in line with the standard jQuery
+          // rejection, passing req as first argument, status as second
+          // and error object as the third
+          promise.reject(req, 'Unknown error', data);
+        } else {
+          promise.resolve(data);
+        }
+      });
+
+      return promise;
+    },
+
     userDetail: function (userId) {
       /* TODO: Call the Etsy profile API */
       //users/19181170/profile.js?api_key=pq046kugg8nrx8f2mu71awb7&callback=

@@ -8,7 +8,9 @@
 </head>
 <body>
 
-  <div class="main"></div>
+  <div id="container"></div>
+
+  <div id="profile-listings"></div>
 
   <script type="text/html" id="listings">
     <% m.items.forEach(function (item) { %>
@@ -26,11 +28,13 @@
   </script>
 
   <script type="text/html" id="profile">
-    <img src="<%= m.user.image_url_75x75 %>"/>
-    <h1><%- m.user.first_name %> <%- m.user.last_name %></h1>
-    <p>Username: <%- m.user.login_name %></p>
-    <p>Location: <%- m.user.city %>, <%- m.user.region %></p>
-    <p><%- m.user.bio %></p>
+    <div class="header">
+      <img class="avatar" src="<%= m.user.image_url_75x75 %>"/>
+      <h1><%- m.user.first_name %> <%- m.user.last_name %></h1>
+      <p>Username: <%- m.user.login_name %></p>
+      <p>Location: <%- m.user.city %>, <%- m.user.region %></p>
+      <p><%- m.user.bio %></p>
+    </div>
   </script>
 
   <script src="js/vendor.js"></script>
