@@ -10,16 +10,19 @@ app.router.add('', function() {
     console.log(err);
   });
 
-
-  jQuery(window).load( function() {
-    $('#container').isotope ({
-      itemSelector: '.item',
-      layoutMode : 'masonry'
-      // masonry: {
-      //   columnWidth: 50
-      // }
-    });
+  $(document).ready(function() {
+  	$(".text-content").dotdotdot();
   });
+
+  // jQuery(window).load( function() {
+  //   $('#container').isotope ({
+  //     itemSelector: '.item',
+  //     layoutMode : 'masonry'
+  //     // masonry: {
+  //     //   columnWidth: 50
+  //     // }
+  //   });
+  // });
 
   // $(document).scrollTop(0);
 

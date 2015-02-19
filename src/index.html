@@ -8,26 +8,29 @@
 </head>
 <body>
 
+  <div class="main-header">Pinter<span class="etsy">Etsy</span></div>
   <div id="container"></div>
 
   <div id="profile-listings"></div>
 
   <script type="text/html" id="listings">
-    <% m.items.forEach(function (item) { %>
-    <div class="item" data-id="<%- item.user_id %>">
-      <img src="<%- item.MainImage.url_570xN %>"/>
-      <div class="text-content">
-        <h1><%- item.title %></h1>
-        <h2><%- item.price %> <%- item.currency_code %></h2>
-        <a href="#users/<%- item.user_id %>"><button class="profile-link" >User Profile</button></a>
-        <a href="<%- item.url %>"/></a>
-        <p><%- item.description %></p>
-      </div>
-    </div></h1>
-    <% }) %>
+  </span><% m.items.forEach(function (item) { %>
+      <div class="item" data-id="<%- item.user_id %>">
+        <img src="<%- item.MainImage.url_570xN %>"/>
+        <div class="text-content">
+          <h1><%- item.title %></h1>
+          <h2><%- item.price %> <%- item.currency_code %></h2>
+          <a href="#users/<%- item.user_id %>"><button class="profile-link" >User Profile</button></a>
+          <a href="<%- item.url %>"/></a>
+          <p><%- item.description %></p>
+        </div>
+      </div></h1>
+      <% }) %>
   </script>
 
-  <script type="text/html" id="profile">
+
+
+</div><script type="text/html" id="profile">
     <div class="header">
       <img class="avatar" src="<%= m.user.image_url_75x75 %>"/>
       <h1><%- m.user.first_name %> <%- m.user.last_name %></h1>

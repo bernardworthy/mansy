@@ -13,14 +13,24 @@ app.router.add('users/:userid', function(r) {
     console.log(err);
   });
 
-  app.api.listingsByUserId(r.params.userid)
+
+  app.api.shopByUserId(r.params.userid)
   .done(function(data) {
     console.log(data);
-    var listingTemplate = _.template($('#listings').html(), {variable: 'm'});
+    var shop_id = data.results[0].shop_id;
 
+    app.api.listingsByShopId(shop_id)
+    .done(function(data) {
+      var listingTemplate = _.template($('#listings').html(), {variable: 'm'});
+      $('#profile-listings').html(listingTemplate({items: data.results}));
+
+    })
+    .fail(function(req, status, err) {
+      console.log(err);
+    });
     // for (i = 0; i < data.results.length; i++) {
       // if (data.results[i].user_id === r.params.userid) {
-        $('#profile-listings').html(listingTemplate({items: data.results}));
+  // $('#profile-listings').html(listingTemplate({items: data.results[0]}));
       // }
     // }
 
@@ -30,6 +40,7 @@ app.router.add('users/:userid', function(r) {
   });
 
   $(document).scrollTop(0);
+
 
   //
   // $(window).on('beforeunload', function() {

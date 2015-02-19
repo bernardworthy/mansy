@@ -24,8 +24,26 @@ app.EtsyApi = function (spec) {
       return promise;
     },
 
-    listingsByUserId: function (user_id) {
-      var url = baseUrl + '/listings/active.js?includes=MainImage&api_key=' + spec.apiKey + '&user_id_or_name=' + user_id + '&callback=?';
+    shopByUserId: function (user_id) {
+      var url = baseUrl + '/users/' + user_id + '/shops.js?includes=MainImage&api_key=' + spec.apiKey + '&callback=?';
+      var promise = $.Deferred();
+
+      var req = $.getJSON(url).done(function (data) {
+        if (!data.ok) {
+          // Keep our rejection in line with the standard jQuery
+          // rejection, passing req as first argument, status as second
+          // and error object as the third
+          promise.reject(req, 'Unknown error', data);
+        } else {
+          promise.resolve(data);
+        }
+      });
+
+      return promise;
+    },
+
+    listingsByShopId: function (shop_id) {
+      var url = baseUrl + '/shops/' + shop_id + '/listings/active.js?includes=MainImage&api_key=' + spec.apiKey + '&callback=?';
       var promise = $.Deferred();
 
       var req = $.getJSON(url).done(function (data) {
